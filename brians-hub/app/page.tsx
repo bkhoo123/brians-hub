@@ -26,6 +26,7 @@ import {
   Clock,
   MessageCircle,
   Mic,
+  Zap,
 } from "lucide-react";
 
 type MenuItem = {
@@ -39,6 +40,7 @@ const menuItems: MenuItem[] = [
   { id: "projects", label: "Projects", icon: FolderKanban },
   { id: "tasks", label: "Tasks", icon: CheckSquare },
   { id: "team", label: "Team", icon: Users },
+  { id: "automations", label: "Automations", icon: Zap },
   { id: "settings", label: "Settings", icon: Settings },
 ];
 
@@ -440,6 +442,23 @@ export default function Home() {
           </div>
         );
 
+      case "automations":
+        return (
+          <div className="flex-1 p-8">
+            <h1 className="text-3xl font-semibold text-gray-900 mb-2">
+              Automations
+            </h1>
+            <p className="text-sm text-gray-500 mb-8">
+              Create and manage your workflow automations
+            </p>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+              <p className="text-gray-600">
+                Automations content coming soon...
+              </p>
+            </div>
+          </div>
+        );
+
       case "settings":
         return (
           <div className="flex-1 p-8">
@@ -467,7 +486,9 @@ export default function Home() {
         {/* Logo */}
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center gap-2">
-            <span className="font-medium text-slate-900 text-lg">Brian's Hub</span>
+            <span className="font-medium text-slate-900 text-lg">
+              Brian's Hub
+            </span>
           </div>
         </div>
 
@@ -482,22 +503,18 @@ export default function Home() {
                     onClick={() => setSelectedItem(item.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3  transition-all text-sm ${
                       selectedItem === item.id
-                        ? "bg-gray-100 text-gray-900 font-medium"
-                        : "text-gray-600 hover:bg-gray-50"
+                        ? "bg-gray-100 text-gray-900 font-semibold"
+                        : "text-gray-900 hover:bg-gray-50 font-medium"
                     }`}
                   >
                     <Icon size={20} />
                     <span>{item.label}</span>
-                    {item.id === "projects" || item.id === "tasks" ? (
-                      <Plus size={16} className="ml-auto text-gray-400" />
-                    ) : null}
                   </button>
                 </li>
               );
             })}
           </ul>
         </nav>
-
 
         {/* Bottom Links */}
         <div className="p-4 border-t border-gray-200 space-y-2">
